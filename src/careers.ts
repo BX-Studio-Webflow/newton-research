@@ -8,19 +8,18 @@ document.addEventListener("DOMContentLoaded", async () => {
   const jobTemplate = document.querySelector(`[dev-target=job-template]`);
   const jobLoader = document.querySelector(`[dev-target=job-loader]`);
 
-  if (!jobWrap || !jobTemplate)
-    return console.error(`No job wrap or job template found`);
+  if (!jobWrap || !jobTemplate || !jobLoader)
+    return console.error(`No job wrap, jobLoader or job template found`);
 
   const { data, error } = await getPositions();
   console.log({ data });
   if (data) {
     jobWrap.innerHTML = "";
-    jobLoader?.setAttribute("dev-hide", "true");
+    jobLoader.setAttribute("dev-hide", "true");
     jobWrap.setAttribute("dev-hide", "false");
     data.departments
       .map(({ jobs }) => jobs)
       .flat()
-      .slice(0, 3)
       .map(({ absolute_url, location, title }) => ({
         absolute_url,
         location,
