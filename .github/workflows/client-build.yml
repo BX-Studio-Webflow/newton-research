@@ -2,9 +2,9 @@ name: Client Build
 
 on:
   push:
-    paths:
-      - "client/**"
-      - ".github/workflows/client-build.yml"
+    branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
   build:
