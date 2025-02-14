@@ -23,7 +23,7 @@ jobs:
         with:
           node-version: "18"
           cache: "npm"
-          cache-dependency-path: client/package.json
+          cache-dependency-path: package.json
 
       - name: Install dependencies
         run: npm install
@@ -38,4 +38,3 @@ jobs:
           git add dist -f
           git commit -m "Add build files" || echo "No changes to commit"
           git push
-
